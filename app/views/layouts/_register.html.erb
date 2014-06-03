@@ -1,0 +1,26 @@
+<!-- RegisterModal -->
+<div class="modal fade" id="cadastar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title" id="myModalLabel"> Cadastro </h2>
+      </div>
+      <div class="modal-body">
+        <center>
+          <button class="btn btn-facebook">
+            <i class="fa fa-facebook"></i> | Conecte usando o Facebook
+          </button>
+          <p id="fb_alert"> Nós nunca postaremos nada sem sua permissão. </p>
+        </center>
+
+        <%= render 'users/form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"> Fechar </button>
+        <button type="button" class="btn btn-success" data-dismiss="modal"> Cadastrar </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /RegisterModal -->

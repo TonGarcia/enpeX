@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>enpeX ©</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <link rel="stylesheet" href="/assets/style.css"/>
+      <link rel="stylesheet" href="/assets/app_style.css"/>
+      <%= csrf_meta_tags %>
+
+      <style>
+
+          .topic1 {
+              background-image: url("/assets/carousel_muro.jpg");
+              background-repeat: no-repeat;
+          }
+
+          .topic2 {
+              background-image: url("/assets/carousel_mini.jpg");
+              background-repeat: no-repeat;
+          }
+
+          .topic3 {
+              background-image: url("/assets/carousel_library.jpg");
+              background-repeat: no-repeat;
+          }
+
+      </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <ul id='pull_actions' class="nav navbar-nav pull-right">
+                <li>
+                    <a class="" href="#cadastar" data-toggle="modal" data-target="#cadastar"> Cadastrar </a>
+                </li>
+                <li>
+                    <a class="" href="#logar" data-toggle="modal" data-target="#logar"> Logar </a>
+                </li>
+            </ul>
+
+            <a class="navbar-brand" href="/">
+              <span class="success">en</span><span class="warning">p</span><span class="primary">e</span><span class="danger">X</span>
+            </a>
+
+            <ul id='actions' class="nav navbar-nav">
+                <li>
+                    <a href="#descobrir" data-toggle="" data-target=""> Descobrir </a>
+                </li>
+                <li>
+                    <a  href="#iniciar" data-toggle="" data-target=""> Iniciar </a>
+                </li>
+            </ul>
+
+            <div class="container-fluid">
+              <form id="search_form" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Pesquisar projetos & pessoas">
+                </div>
+              </form>
+            </div>
+        </nav>
+
+        <div id="home_carousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#home_carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#home_carousel" data-slide-to="1"></li>
+            <li data-target="#home_carousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="topic1 item active">
+              <div class="carousel-caption">
+                <h3>First slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+            <div class="topic2 item">
+              <div class="carousel-caption">
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+            <div class="topic3 item">
+              <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#home_carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+          </a>
+          <a class="right carousel-control" href="#home_carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+
+        <div class="container box">
+            <%= yield %>
+        </div>
+
+        <%= render 'layouts/register' %>
+        <%= render 'layouts/login' %>
+
+        <script src="/assets/bootstrap/bootstrap.min.js"></script>
+        <script>
+            $('.carousel').carousel();
+        </script>
+    </body>
+</html>

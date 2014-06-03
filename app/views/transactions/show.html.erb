@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @transaction.value %>
+</p>
+
+<p>
+  <strong>DiscountedValue:</strong>
+  <%= @transaction.discounted_value %>
+</p>
+
+<p>
+  <strong>CardValue:</strong>
+  <%= @transaction.value * @transaction.card_tax %>
+</p>
+
+<p>
+  <strong>CompanyValue:</strong>
+  <%= @transaction.value * @transaction.company_tax %>
+</p>
+
+<p>
+  <strong>Investor:</strong>
+  <%= @transaction.user.name %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @transaction.project.name %>
+</p>
+    <strong>ProjectOwner:</strong>
+    <%= @transaction.project.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>

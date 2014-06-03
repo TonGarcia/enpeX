@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Url video:</strong>
+  <%= @project.url_video %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user.name %>
+</p>
+
+<ul>
+  <%
+      @project.transactions.each do |transaction|
+  %>
+        <li> <strong>Investor:</strong> <%= transaction.user.name %> - <strong> Invested: </strong> R$ <%= transaction.value %> </li>
+  <%
+      end
+  %>
+</ul>
+
+<div style="color:#Df4442;">
+  <strong>TOTAL RECEIVED: </strong> R$<%= @project.discounted_amount_invested %> <br/>
+</div>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

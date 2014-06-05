@@ -11,36 +11,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601005026) do
+ActiveRecord::Schema.define(version: 20140605042415) do
+
+  create_table "description_items", force: true do |t|
+    t.string   "title",                     limit: 75,         null: false
+    t.text     "long_description",          limit: 2147483647, null: false
+    t.integer  "project_id"
+    t.string   "avatar_piece_file_name"
+    t.string   "avatar_piece_content_type"
+    t.integer  "avatar_piece_file_size"
+    t.datetime "avatar_piece_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "description_items", ["project_id"], name: "index_description_items_on_project_id", using: :btree
+
+  create_table "payment_methods", force: true do |t|
+    t.string   "name",        limit: 50,  null: false
+    t.string   "method_type", limit: 50
+    t.string   "description", limit: 140
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "url_video"
-    t.integer  "user_id"
+    t.string   "name",                      limit: 50,  null: false
+    t.string   "resume",                    limit: 144, null: false
+    t.string   "url_video",                 limit: 50
+    t.integer  "creater_id"
+    t.string   "avatar_piece_file_name"
+    t.string   "avatar_piece_content_type"
+    t.integer  "avatar_piece_file_size"
+    t.datetime "avatar_piece_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+  add_index "projects", ["creater_id"], name: "index_projects_on_creater_id", using: :btree
 
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.integer  "user_id"
+  create_table "receipts", force: true do |t|
+    t.string   "token",          limit: 50,  null: false
+    t.string   "id_on_operator", limit: 45,  null: false
+    t.string   "url_access",     limit: 140, null: false
+    t.string   "tid",            limit: 45
+    t.integer  "transaction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "receipts", ["transaction_id"], name: "index_receipts_on_transaction_id", using: :btree
 
   create_table "social_networks", force: true do |t|
-    t.string   "name"
-    t.string   "acronym"
-    t.string   "description"
+    t.string   "name",        limit: 50, null: false
+    t.string   "acronym",     limit: 10
+    t.string   "description", limit: 45
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "social_sessions", force: true do |t|
-    t.integer  "id_on_social"
+    t.string   "id_on_social",      limit: 45, null: false
+    t.string   "name",              limit: 65, null: false
+    t.string   "username",          limit: 45, null: false
+    t.string   "email",             limit: 55, null: false
     t.integer  "user_id"
     t.integer  "social_network_id"
     t.datetime "created_at"
@@ -48,23 +82,27 @@ ActiveRecord::Schema.define(version: 20140601005026) do
   end
 
   create_table "transactions", force: true do |t|
-    t.float    "value"
-    t.float    "discounted_value"
-    t.float    "card_tax"
-    t.float    "company_tax"
-    t.integer  "user_id"
-    t.integer  "project_id"
+    t.decimal  "value",                        precision: 9, scale: 2, null: false
+    t.decimal  "decimal",                      precision: 9, scale: 2, null: false
+    t.string   "currency",          limit: 30,                         null: false
+    t.boolean  "banking",                                              null: false
+    t.integer  "payment_method_id"
+    t.integer  "payer_id"
+    t.integer  "receiver_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "transactions", ["project_id"], name: "index_transactions_on_project_id", using: :btree
-  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
+  add_index "transactions", ["payer_id"], name: "index_transactions_on_payer_id", using: :btree
+  add_index "transactions", ["payment_method_id"], name: "index_transactions_on_payment_method_id", using: :btree
+  add_index "transactions", ["receiver_id"], name: "index_transactions_on_receiver_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
+    t.string   "name",           limit: 55, null: false
+    t.string   "email",          limit: 55, null: false
+    t.string   "academic_email", limit: 55
+    t.string   "pass_salt",      limit: 29, null: false
+    t.string   "password",       limit: 60, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

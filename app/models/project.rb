@@ -1,6 +1,14 @@
 class Project < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, :foreign_key => :creater_id, :class_name => 'User'
   has_many :transactions
+
+  # Attrs Validations
+  validates :name, presence: true, length: { in: 3..50 }, on: [:create, :update]
+  validates :resume, presence: true, length: { in: 3..144 }, on: [:create, :update]
+  validates :url_video, presence: true, length: { in: 3..50 }, on: [:create, :update]
+
+  # Relations Validations
+  validates :creater_id, presence: true, on: [:create, :update]
 
   def discounted_amount_invested
     Transaction.where(:project_id => self.id).sum(:discounted_value)

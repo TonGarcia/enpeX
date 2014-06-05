@@ -4,6 +4,16 @@ class Transaction < ActiveRecord::Base
   belongs_to :payment_method
   has_one :receipt
 
+  # Attrs validations
+  validates :value, presence: true, on: [:create, :update]
+  validates :currency, presence: true, length: { in: 3..30 }, on: [:create, :update]
+  validates :banking, presence: true, on: [:create, :update]
+
+  # Associations validations
+  validates :payer_id, presence: true
+  validates :receiver_id, presence: true
+  validates :payment_method_id, presence: true
+
   before_create :charge
   before_save :charge
 

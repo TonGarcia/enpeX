@@ -6,7 +6,6 @@ class CreateSocialSessions < ActiveRecord::Migration
       t.string :username, limit: 45, null: false
       t.string :email, limit: 55, null: false
       t.belongs_to :user
-      t.belongs_to :social_network
 
       t.timestamps
     end

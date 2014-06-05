@@ -62,21 +62,12 @@ ActiveRecord::Schema.define(version: 20140605042415) do
 
   add_index "receipts", ["transaction_id"], name: "index_receipts_on_transaction_id", using: :btree
 
-  create_table "social_networks", force: true do |t|
-    t.string   "name",        limit: 50, null: false
-    t.string   "acronym",     limit: 10
-    t.string   "description", limit: 45
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "social_sessions", force: true do |t|
-    t.string   "id_on_social",      limit: 45, null: false
-    t.string   "name",              limit: 65, null: false
-    t.string   "username",          limit: 45, null: false
-    t.string   "email",             limit: 55, null: false
+    t.string   "id_on_social", limit: 45, null: false
+    t.string   "name",         limit: 65, null: false
+    t.string   "username",     limit: 45, null: false
+    t.string   "email",        limit: 55, null: false
     t.integer  "user_id"
-    t.integer  "social_network_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  belongs_to :user, :foreign_key => :creater_id, :class_name => 'User'
+  belongs_to :user, :class_name => 'User', :foreign_key => :creator_id
   has_many :transactions
 
   # Attrs Validations

@@ -1,12 +1,12 @@
 class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
-      t.float :value
-      t.float :discounted_value
-      t.float :card_tax
-      t.float :company_tax # CAPTAR TAX
-      t.belongs_to :user, index: true
-      t.belongs_to :project, index: true
+      t.decimal :value, :decimal, precision: 9, scale: 2, null: false
+      t.string :currency, limit: 30, null: false
+      t.boolean :banking, null: false
+      t.belongs_to :payment_method, index: true
+      t.references :payer, index: true
+      t.references :receiver, index: true
 
       t.timestamps
     end

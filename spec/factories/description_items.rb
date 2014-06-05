@@ -1,7 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :role do
-    name "MyString"
+  factory :description_item do
+    title "MyString"
+    long_description "MyString"
+    project nil
   end
 end

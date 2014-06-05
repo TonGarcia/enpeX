@@ -1,6 +1,9 @@
 class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
+  belongs_to :payment_method
+  has_one :receipt
+
   before_create :charge
   before_save :charge
 

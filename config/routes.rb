@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :description_items
+
   root :to => 'welcome#index'
   resources :transactions
   resources :projects

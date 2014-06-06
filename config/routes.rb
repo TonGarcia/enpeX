@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  root :to => 'welcome#index'
+  root :to => 'welcome#home'
+  get 'users/sign_out' => 'users#sign_out'
+
   resources :description_items
   resources :transactions
   resources :projects
   resources :users
-
-  get 'users/sign_out' => 'users#sign_out'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -545,6 +545,19 @@ h2.modal-title {
     display: none;
 }
 
+input:required:invalid, input:focus:invalid, textarea:required:invalid, textarea:focus:invalid {
+    background-image: url('/assets/required_attr.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+    box-shadow: none;
+}
+
+input:required:valid, textarea:required:valid {
+    background-image: url('/assets/ok_attr.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
 .project-progress-bar {
     height: 8px;
     border-radius: 4px;

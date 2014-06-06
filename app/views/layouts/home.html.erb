@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
     <head>
       <title>enpeX ©</title>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+      <!-- JS Frameworks -->
+      <script src="/assets/angular/angular.min.js" ></script>
+      <!-- /JS Frameworks -->
+
+      <!-- App Styles -->
       <link rel="stylesheet" href="/assets/style.css"/>
       <link rel="stylesheet" href="/assets/app_style.css"/>
+      <!-- /App Styles -->
       <%= csrf_meta_tags %>
 
       <style>
@@ -54,7 +61,7 @@
             <div class="container-fluid">
               <form id="search_form" class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                  <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Pesquisar projetos & pessoas">
+                  <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Pesquisar projetos & pessoas" >
                 </div>
               </form>
             </div>

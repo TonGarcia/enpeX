@@ -116,8 +116,10 @@
             <%= yield %>
         </div>
 
-        <%= render 'layouts/register' %>
-        <%= render 'layouts/login' %>
+        <% if session['user_id'].nil? %>
+            <%= render 'layouts/register' %>
+            <%= render 'layouts/login' %>
+        <% end %>
 
         <script src="/assets/bootstrap/bootstrap.min.js"></script>
         <script>

@@ -14,6 +14,13 @@
           <p id="fb_alert"> Nós nunca postaremos nada sem sua permissão. </p>
         </center>
 
+        <div ng-if="response.status == 'success' || response.status == 'danger'">
+            <div class="alert alert-{{ response.status }} {{ response.login_notice }}">
+              <button type="button" class="close" data-dismiss="alert" ng-click="response.status = 'none'">×</button>
+              <strong> {{ response.strong_msg }} </strong> {{ response.msg }}
+            </div>
+        </div>
+
         <form id="login_form" ng-submit="login($event)">
           <div class="form-group">
             <input id="login_email" type="text" name="email" class="form-control" placeholder="E-mail">
@@ -25,7 +32,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"> Fechar </button>
-        <button type="button" class="btn btn-success"> Logar </button>
+        <button type="button" class="btn btn-success" ng-click="login($event)"> Logar </button>
       </div>
     </div>
   </div>

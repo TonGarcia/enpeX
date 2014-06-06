@@ -541,6 +541,11 @@ h2.modal-title {
     width: 55%;
 }
 
+#logar.modal .alert {
+    margin: 15px auto;
+    width: 60%;
+}
+
 .modal .modal-body .new_user .actions {
     display: none;
 }

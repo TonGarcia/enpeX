@@ -6,4 +6,18 @@ enpeXApp.controller('HomeController', function ($scope, $http) {
     // The HomeController (control all the home/landing)
     $scope.progressed_sample = "0%";
     $scope.progressed_sample = "80%";
+
+    $scope.register = function($event) {
+        // Prevent form submission before validate it
+        $event.preventDefault();
+    };
+
+    $scope.login = function($event) {
+        // Prevent form submission before validate it
+        $event.preventDefault();
+    };
+
+    $scope.search = function() {
+
+    };
 });

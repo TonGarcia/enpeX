@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root :to => 'welcome#home'
+  post 'users/login' => 'users#login'
   get 'users/sign_out' => 'users#sign_out'
 
   resources :description_items

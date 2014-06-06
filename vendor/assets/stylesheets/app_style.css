@@ -544,3 +544,37 @@ h2.modal-title {
 .modal .modal-body .new_user .actions {
     display: none;
 }
+
+.project-progress-bar {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.project-progressed-bar {
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+    border-radius: 4px;
+}
+
+.bg-grey {
+    background-color: #D9D9DE;
+}
+
+.bg-education {
+    background-color: #2BDE73;
+}
+
+.bg-search {
+    background-color: #FFE933;
+}
+
+.bg-extension {
+    background-color: #4DDDDE;
+}
+
+.full-height {
+    height: 100%;
+}

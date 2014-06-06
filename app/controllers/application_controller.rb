@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     # SetUp the user to prevent finds on BD
     if session['user_id'].nil?
       if params['action'] != 'sign_out' && params['action'] != 'home'
-        if params['controller'] != 'users' && params['action'] != 'create'
+        if (params['controller'] != 'users' && params['action'] != 'create') || (params['controller'] != 'users' && params['action'] != 'login')
           redirect_to root_path
           return
         end

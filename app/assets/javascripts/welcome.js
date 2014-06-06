@@ -4,6 +4,7 @@
 
 enpeXApp.controller('HomeController', function ($scope, $http) {
     // The HomeController (control all the home/landing)
+    $scope.login_notice = 'hidden';
     $scope.progressed_sample = "0%";
     $scope.progressed_sample = "80%";
 
@@ -32,6 +33,19 @@ enpeXApp.controller('HomeController', function ($scope, $http) {
     $scope.login = function($event) {
         // Prevent form submission before validate it
         $event.preventDefault();
+
+        $scope.url = '/users/login';
+        $http.post($scope.url, { email: $("#login_email").val(), password: $("#login_password").val() })
+             .success(function(response){
+                $scope.response = response;
+                $scope.login_notice = 'show';
+
+                if(response.status == 'success') {
+                    setTimeout(function() {
+                        location.reload();
+                    }, 500);
+                }
+            });
     };
 
     $scope.search = function() {

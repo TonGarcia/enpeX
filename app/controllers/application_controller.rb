@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # SetUp user
   before_action :setup_user
+  before_filter :setup_user
 
   def setup_user
     # SetUp the user to prevent finds on BD
@@ -16,9 +17,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    if @user.nil? && !session['user_id'].nil?
-      @user = User.where(id: session['user_id']).take!
-      session.delete('user_id') if @user.nil?
+    if @current_user.nil? && !session['user_id'].nil?
+      @current_user = User.where(id: session['user_id']).take!
+      session.delete('user_id') if @current_user.nil?
     end
   end
 end

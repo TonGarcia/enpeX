@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :description_items
-
   root :to => 'welcome#index'
+  resources :description_items
   resources :transactions
   resources :projects
   resources :users

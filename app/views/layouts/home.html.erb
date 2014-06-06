@@ -43,12 +43,26 @@
     <body ng-controller="HomeController">
         <nav class="navbar navbar-default" role="navigation">
             <ul id='pull_actions' class="nav navbar-nav pull-right">
-                <li>
-                    <a class="" href="#cadastar" data-toggle="modal" data-target="#cadastar"> Cadastrar </a>
-                </li>
-                <li>
-                    <a class="" href="#logar" data-toggle="modal" data-target="#logar"> Logar </a>
-                </li>
+                <% if session['user_id'].nil? %>
+                    <li>
+                        <a class="" href="#cadastar" data-toggle="modal" data-target="#cadastar"> Cadastrar </a>
+                    </li>
+                    <li>
+                        <a class="" href="#logar" data-toggle="modal" data-target="#logar"> Logar </a>
+                    </li>
+                <% else %>
+                    <li>
+                      <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="current_user_actions" data-toggle="dropdown">
+                          <h4> <%= @current_user.name %> <span class="caret"></span> </h4>
+                        </button>
+                        <!-- MENU -->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li><a role="menuitem" tabindex="-1" href="/users/sign_out">Sair</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                <% end %>
             </ul>
 
             <a class="navbar-brand" href="/">

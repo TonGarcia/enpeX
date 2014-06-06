@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   layout 'home'
 
-  def index
+  def home
     @user = User.new
   end
 

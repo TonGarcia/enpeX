@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140605042415) do
     t.string   "name",                      limit: 50,  null: false
     t.string   "resume",                    limit: 144, null: false
     t.string   "url_video",                 limit: 50
-    t.integer  "creater_id"
+    t.integer  "creator_id"
     t.string   "avatar_piece_file_name"
     t.string   "avatar_piece_content_type"
     t.integer  "avatar_piece_file_size"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140605042415) do
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["creater_id"], name: "index_projects_on_creater_id", using: :btree
+  add_index "projects", ["creator_id"], name: "index_projects_on_creator_id", using: :btree
 
   create_table "receipts", force: true do |t|
     t.string   "token",          limit: 50,  null: false

@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
 
   # Attrs
   @password_confirmation
+  @email_confirmation
 
   # Encrypt the pasword using BCrypt
   def encrypt_password

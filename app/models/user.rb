@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_one :social_session
-  has_many :transactions
-  has_many :projects
+  has_many :transactions, foreign_key: :payer_id
+  has_many :projects, foreign_key: :creator_id
 
   # Custom validations
   validate :encrypt_password

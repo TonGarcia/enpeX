@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   validates :url_video, presence: true, length: { in: 3..50 }, on: [:create, :update]
 
   # Relations Validations
-  validates :creater_id, presence: true, on: [:create, :update]
+  validates :creator_id, presence: true, on: [:create, :update]
 
   def discounted_amount_invested
     Transaction.where(:project_id => self.id).sum(:discounted_value)

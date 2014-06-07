@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Attrs validations
   validates :name, presence: true, length: { in: 3..55 }, on: [:create, :update]
-  validates :email, presence: true, length: { in: 3..55 }, on: [:create, :update]
+  validates :email, presence: true, uniqueness: true, length: { in: 3..55 }, on: [:create, :update]
   validates :password, presence: true, length: { in: 3..60 }, on: [:create, :update]
 
   # Associations validations

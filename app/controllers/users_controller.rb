@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :login
+
   # GET /users
   # GET /users.json
   def index
@@ -63,6 +65,17 @@ class UsersController < ApplicationController
   def sign_out
     session.delete('user_id')
     redirect_to root_path
+  end
+
+  def login
+    user = User.authenticate(params['email'], params['password'])
+
+    if user.nil?
+      render json: { status: 'danger', strong_msg: 'ERRO:', msg: 'E-mail ou senha inválidos' }
+    else
+      session['user_id'] = user.id
+      render json: { status: 'success', strong_msg: 'Sucesso:', msg: 'Seja bem-vindo(a)!' }
+    end
   end
 
   private

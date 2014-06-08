@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  skip_before_filter :setup_user, only: :home
   layout 'home'
 
   def home

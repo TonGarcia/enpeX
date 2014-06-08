@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :login
-  skip_before_filter :setup_user, only: :create
+  skip_before_filter :setup_user, only: [:create, :login]
 
   # GET /users
   # GET /users.json

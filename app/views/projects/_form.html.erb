@@ -12,25 +12,38 @@
   <% end %>
 
     <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
     </div>
+
+    <label for="project_type">Selecione o segmento do projeto:</label>
+    <select id="project_type" name="project_type">
+      <option value="none">Segmento</option>
+      <% ProjectType.all.each do |project_type| %>
+          <option value="<%= project_type.id %>"> <%= project_type.name %></option>
+      <% end %>
+    </select>
+
     <!-- TODO ver como o Face fez isso aqui -->
     <div class="field">
       <%= f.label :alias_name %><br>
       <%= f.text_field :alias_name %>
     </div>
+
     <div class="field">
         <%= f.label :resume %><br>
         <%= f.text_field :resume %>
     </div>
+
     <div class="field">
         <%= f.label :url_video %><br>
         <%= f.text_field :url_video %>
     </div>
+
     <div class="field">
       <%= f.check_box :active %> <%= f.label :active %>
     </div>
+
     <div class="actions">
         <%= f.submit %>
     </div>

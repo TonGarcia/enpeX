@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user, :class_name => 'User', :foreign_key => :creator_id
   belongs_to :project_type
+  has_one :project_goal
   has_many :transactions, foreign_key: :receiver_id
   has_many :description_items
 
@@ -14,8 +15,17 @@ class Project < ActiveRecord::Base
   validates :creator_id, presence: true, on: [:create, :update]
   validates :project_type_id, presence: true, on: [:create, :update]
 
+  # Attrs better named
   def owner
     self.user
+  end
+
+  def type
+    self.project_type
+  end
+
+  def completed_goal_percentage
+
   end
 
   # TODO criar um btn gerar alias caso a pessoa não saiba que nome usar ou fazer igual o Face, só cria alias dps de um certo alcance
@@ -24,6 +34,7 @@ class Project < ActiveRecord::Base
     self.alias_name = self.alias_name.gsub(/ /, '-')
   end
 
+  # MONEY/TRANSACTIONs methods
   def discounted_amount_invested
     if self.transactions.to_a.empty?
       0.0
@@ -44,6 +55,7 @@ class Project < ActiveRecord::Base
     if !transactions.first.nil? then total_amount_invested * transactions.first!.card_tax else 0.0 end
   end
 
+  # enpeX tax
   def company_receipt
     if !transactions.first.nil? then total_amount_invested * transactions.first!.company_tax else 0.0 end
   end

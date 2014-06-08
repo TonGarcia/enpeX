@@ -42,4 +42,12 @@ class User < ActiveRecord::Base
 
     return_user
   end
+
+  def first_name
+    self.name.split(/ /)[0]
+  end
+
+  def sur_name
+    self.name.split(/ /)[1]
+  end
 end

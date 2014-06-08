@@ -5,9 +5,9 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>Description</th>
       <th>Url video</th>
-      <th>User</th>
+      <th>Owner</th>
+      <th>Segmentação</th>
       <th>Amount Invested</th>
       <th colspan="3"></th>
     </tr>
@@ -19,7 +19,8 @@
         <td><%= project.id %></td>
         <td><%= project.name %></td>
         <td><%= project.url_video %></td>
-        <td><%= project.user.name %></td>
+        <td><%= project.owner.name %></td>
+        <td class="thumbnail_<%= project.project_type.name %>"><center><%= project.project_type.name %></center></td>
         <td><center>R$ <%= project.discounted_amount_invested %></center></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>

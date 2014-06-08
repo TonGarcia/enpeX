@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# ProjectTypes
+puts 'Inserting ProjectTypes...'.colorize(:green)
+ProjectType.create(:name => 'education')
+ProjectType.create(:name => 'search')
+ProjectType.create(:name => 'extension')
+puts '...ProjectTypes inserteds.'.colorize(:light_blue)
+# /ProjectTypes

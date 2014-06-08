@@ -7,6 +7,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :url_video, limit: 50, null: true
       t.boolean :active, default: true, null: false
       t.references :creator, index: true
+      t.belongs_to :project_type
 
       t.timestamps
     end

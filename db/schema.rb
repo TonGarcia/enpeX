@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20140605042415) do
     t.datetime "updated_at"
   end
 
+  create_table "project_types", force: true do |t|
+    t.string   "name",        limit: 30, null: false
+    t.string   "description", limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "name",                      limit: 50,                 null: false
     t.string   "alias_name",                limit: 50,                 null: false
@@ -46,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140605042415) do
     t.string   "avatar_piece_content_type"
     t.integer  "avatar_piece_file_size"
     t.datetime "avatar_piece_updated_at"
+    t.integer  "project_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

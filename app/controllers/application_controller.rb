@@ -6,9 +6,16 @@ class ApplicationController < ActionController::Base
   # SetUp Language
   before_action :set_locale
 
+  # Global blank user instance for help on forms creation & for count views/visits on projs
+  before_action :viewer_user
+
   # SetUp user
   before_action :setup_user, except: :sign_out
   before_filter :setup_user, except: :sign_out
+
+  def set_locale
+    I18n.locale = :pt || I18n.default_locale
+  end
 
   def setup_user
     unless session['user_id'].nil?
@@ -25,7 +32,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_locale
-    I18n.locale = :pt || I18n.default_locale
+  def viewer_user
+    @user = User.new
   end
 end

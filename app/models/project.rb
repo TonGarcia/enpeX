@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user, :class_name => 'User', :foreign_key => :creator_id
+  belongs_to :project_type
   has_many :transactions, foreign_key: :receiver_id
   has_many :description_items
 
@@ -11,6 +12,7 @@ class Project < ActiveRecord::Base
 
   # Relations Validations
   validates :creator_id, presence: true, on: [:create, :update]
+  validates :project_type_id, presence: true, on: [:create, :update]
 
   def owner
     self.user

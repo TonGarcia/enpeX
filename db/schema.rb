@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605042415) do
+ActiveRecord::Schema.define(version: 20140608175316) do
+
+  create_table "currencies", force: true do |t|
+    t.string   "name",       limit: 50, null: false
+    t.string   "acronym",    limit: 5,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "description_items", force: true do |t|
     t.string   "title",                     limit: 75,         null: false
@@ -28,16 +35,25 @@ ActiveRecord::Schema.define(version: 20140605042415) do
   add_index "description_items", ["project_id"], name: "index_description_items_on_project_id", using: :btree
 
   create_table "payment_methods", force: true do |t|
-    t.string   "name",        limit: 50,  null: false
-    t.string   "method_type", limit: 50
+    t.string   "type",        limit: 55,  null: false
     t.string   "description", limit: 140
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "project_goals", force: true do |t|
+    t.decimal  "value",                     precision: 9, scale: 2, null: false
+    t.decimal  "decimal",                   precision: 9, scale: 2, null: false
+    t.string   "justification", limit: 140
+    t.integer  "currency_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "project_types", force: true do |t|
-    t.string   "name",        limit: 30, null: false
-    t.string   "description", limit: 30
+    t.string   "name",        limit: 30,  null: false
+    t.string   "description", limit: 140
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,17 +99,18 @@ ActiveRecord::Schema.define(version: 20140605042415) do
   end
 
   create_table "transactions", force: true do |t|
-    t.decimal  "value",                        precision: 9, scale: 2, null: false
-    t.decimal  "decimal",                      precision: 9, scale: 2, null: false
-    t.string   "currency",          limit: 30,                         null: false
-    t.boolean  "banking",                                              null: false
-    t.integer  "payment_method_id"
-    t.integer  "payer_id"
-    t.integer  "receiver_id"
+    t.decimal  "value",             precision: 9, scale: 2, null: false
+    t.decimal  "decimal",           precision: 9, scale: 2, null: false
+    t.boolean  "banking",                                   null: false
+    t.integer  "payer_id",                                  null: false
+    t.integer  "receiver_id",                               null: false
+    t.integer  "payment_method_id",                         null: false
+    t.integer  "currency_id",                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "transactions", ["currency_id"], name: "index_transactions_on_currency_id", using: :btree
   add_index "transactions", ["payer_id"], name: "index_transactions_on_payer_id", using: :btree
   add_index "transactions", ["payment_method_id"], name: "index_transactions_on_payment_method_id", using: :btree
   add_index "transactions", ["receiver_id"], name: "index_transactions_on_receiver_id", using: :btree

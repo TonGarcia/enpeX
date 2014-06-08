@@ -11,6 +11,10 @@ class Project < ActiveRecord::Base
   # Relations Validations
   validates :creator_id, presence: true, on: [:create, :update]
 
+  def owner
+    self.user
+  end
+
   def discounted_amount_invested
     Transaction.where(:project_id => self.id).sum(:discounted_value)
   end

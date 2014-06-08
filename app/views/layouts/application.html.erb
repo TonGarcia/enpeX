@@ -1,98 +1,104 @@
 <!DOCTYPE html>
 <html ng-app="enpeXApp">
-<head>
-  <title>enpeX ©</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <head>
+      <title>enpeX ©</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-  <!-- JS Frameworks -->
-  <script src="/assets/angular/angular.min.js" ></script>
-  <script src="/assets/angular/angular-sanitize.min.js" ></script>
-  <script src="/assets/application.js" ></script>
-  <!-- /JS Frameworks -->
+      <!-- JS Frameworks -->
+      <script src="/assets/angular/angular.min.js" ></script>
+      <script src="/assets/angular/angular-sanitize.min.js" ></script>
+      <script src="/assets/application.js" ></script>
+      <!-- /JS Frameworks -->
 
-  <script>
-      enpeXApp = angular.module('enpeXApp', []);
-  </script>
+      <script>
+          enpeXApp = angular.module('enpeXApp', []);
+      </script>
 
-  <!-- App Styles -->
-  <link rel="stylesheet" href="/assets/style.css"/>
-  <link rel="stylesheet" href="/assets/app_style.css"/>
-  <!-- /App Styles -->
-  <%= csrf_meta_tags %>
+      <!-- App Styles -->
+      <link rel="stylesheet" href="/assets/style.css"/>
+      <link rel="stylesheet" href="/assets/app_style.css"/>
+      <!-- /App Styles -->
+      <%= csrf_meta_tags %>
 
-  <style>
+      <style>
 
-      .topic1 {
-          background-image: url("/assets/carousel_muro.jpg");
-          background-repeat: no-repeat;
-      }
+          .topic1 {
+              background-image: url("/assets/carousel_muro.jpg");
+              background-repeat: no-repeat;
+          }
 
-      .topic2 {
-          background-image: url("/assets/carousel_mini.jpg");
-          background-repeat: no-repeat;
-      }
+          .topic2 {
+              background-image: url("/assets/carousel_mini.jpg");
+              background-repeat: no-repeat;
+          }
 
-      .topic3 {
-          background-image: url("/assets/carousel_library.jpg");
-          background-repeat: no-repeat;
-      }
+          .topic3 {
+              background-image: url("/assets/carousel_library.jpg");
+              background-repeat: no-repeat;
+          }
 
-  </style>
-</head>
-<body ng-controller="HomeController">
-<nav class="navbar navbar-default" role="navigation">
-  <ul id='pull_actions' class="nav navbar-nav pull-right">
-    <% if session['user_id'].nil? %>
-        <li>
-          <a class="" href="#cadastar" data-toggle="modal" data-target="#cadastar"> Cadastrar </a>
-        </li>
-        <li>
-          <a class="" href="#logar" data-toggle="modal" data-target="#logar"> Logar </a>
-        </li>
-    <% else %>
-        <li>
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="current_user_actions" data-toggle="dropdown">
-              <h4> <%= @current_user.name %> <span class="caret"></span> </h4>
-            </button>
-            <!-- MENU -->
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li><a role="menuitem" tabindex="-1" href="/projects/new">Criar Projeto</a></li>
-              <li class="divider"></li>
-              <li><a role="menuitem" tabindex="-1" href="/users/sign_out">Sair</a></li>
-            </ul>
+      </style>
+    </head>
+    <body ng-controller="HomeController">
+        <nav class="navbar navbar-default" role="navigation">
+          <ul id='pull_actions' class="nav navbar-nav pull-right">
+            <% if session['user_id'].nil? %>
+                <li>
+                  <a class="" href="#cadastar" data-toggle="modal" data-target="#cadastar"> Cadastrar </a>
+                </li>
+                <li>
+                  <a class="" href="#logar" data-toggle="modal" data-target="#logar"> Logar </a>
+                </li>
+            <% else %>
+                <li>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="current_user_actions" data-toggle="dropdown">
+                      <h4> <%= @current_user.name %> <span class="caret"></span> </h4>
+                    </button>
+                    <!-- MENU -->
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li><a role="menuitem" tabindex="-1" href="/projects/new">Criar Projeto</a></li>
+                      <li class="divider"></li>
+                      <li><a role="menuitem" tabindex="-1" href="/users/sign_out">Sair</a></li>
+                    </ul>
+                  </div>
+                </li>
+            <% end %>
+          </ul>
+
+          <a class="navbar-brand" href="/">
+            <span class="success">en</span><span class="warning">p</span><span class="primary">eX</span>
+          </a>
+
+          <ul id='actions' class="nav navbar-nav">
+            <li>
+              <a href="#descobrir" data-toggle="" data-target=""> Descobrir </a>
+            </li>
+            <li>
+              <a  href="#iniciar" data-toggle="" data-target=""> Iniciar </a>
+            </li>
+          </ul>
+
+          <div class="container-fluid">
+            <form id="search_form" class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Pesquisar projetos & pessoas" >
+              </div>
+            </form>
           </div>
-        </li>
-    <% end %>
-  </ul>
+        </nav>
 
-  <a class="navbar-brand" href="/">
-    <span class="success">en</span><span class="warning">p</span><span class="primary">eX</span>
-  </a>
+        <div class="container box">
+          <%= yield %>
+        </div>
 
-  <ul id='actions' class="nav navbar-nav">
-    <li>
-      <a href="#descobrir" data-toggle="" data-target=""> Descobrir </a>
-    </li>
-    <li>
-      <a  href="#iniciar" data-toggle="" data-target=""> Iniciar </a>
-    </li>
-  </ul>
+        <% if session['user_id'].nil? %>
+            <%= render 'layouts/register' %>
+            <%= render 'layouts/login' %>
+        <% end %>
 
-  <div class="container-fluid">
-    <form id="search_form" class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <i class="fa fa-search"></i> <input type="text" class="form-control" placeholder="Pesquisar projetos & pessoas" >
-      </div>
-    </form>
-  </div>
-</nav>
-
-<div class="container box">
-  <%= yield %>
-</div>
-
-<script src="/assets/bootstrap/bootstrap.min.js"></script>
-</body>
+        <script src="/assets/bootstrap/bootstrap.min.js"></script>
+        <script src="/assets/welcome.js" ></script>
+    </body>
 </html>

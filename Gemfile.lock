@@ -47,6 +47,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorize (0.7.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.1.0)
@@ -157,6 +158,7 @@ DEPENDENCIES
   better_errors (~> 1.1.0)
   capybara (~> 2.2.1)
   coffee-rails (~> 4.0.0)
+  colorize (~> 0.7.1)
   factory_girl_rails (~> 4.4)
   its
   jbuilder (~> 2.0)

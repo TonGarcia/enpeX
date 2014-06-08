@@ -29,6 +29,9 @@ gem 'spring', group: :development
 # Gem for encrypt Password
 gem 'bcrypt', :require => 'bcrypt'
 
+# Color to the prints on console (PUTS)
+gem 'colorize', '~> 0.7.1'
+
 group :development, :test do
   # RSPec for BDD pratices
   gem 'rspec-rails', '~> 2.14.1'

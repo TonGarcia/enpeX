@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @project.name %>
+</p>
+
+<p>
+  <strong>Segmento:</strong>
+  <%= t(:project_type)[@project.project_type.name.to_sym] %>
 </p>
 
 <p>
@@ -16,7 +21,7 @@
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Criador:</strong>
   <%= @project.owner.name %>
 </p>
 

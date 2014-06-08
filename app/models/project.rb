@@ -16,6 +16,7 @@ class Project < ActiveRecord::Base
     self.user
   end
 
+  # TODO criar um btn gerar alias caso a pessoa não saiba que nome usar ou fazer igual o Face, só cria alias dps de um certo alcance
   def create_alias
     self.alias_name = self.name.downcase
     self.alias_name = self.alias_name.gsub(/ /, '-')

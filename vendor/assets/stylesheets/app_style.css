@@ -399,7 +399,6 @@ nav.navbar #pull_actions.navbar-nav li a{
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    font-weight: bold;
     color: #00a0ff;
 }
 
@@ -446,6 +445,22 @@ span.danger {
     color: #DF4442;
 }
 
+.brand.warning {
+    color: #FFDF29;
+}
+
+.brand.success {
+    color: #00A859;
+}
+
+.brand.primary {
+    color: #3E8FFF;
+}
+
+.brand.danger {
+    color: #DF4442;
+}
+
 #home_carousel {
     background: #000;
     margin-top: -20px;
@@ -488,7 +503,8 @@ span.danger {
 }
 
 .container.box {
-    border: 1px solid #3E8FFF;
+    border: 1px solid #C5EECA;
+    margin-top: 75px;
 }
 
 a.btn-info:hover, a.btn-primary:hover, a.btn-danger:hover, a.btn-success:hover {
@@ -601,4 +617,8 @@ input:required:valid, textarea:required:valid {
 .dropdown button.btn {
     background: white;
     border-left: 2px solid whitesmoke;
+}
+
+#pull_actions #menu_current_user_actions.dropdown-menu {
+    border-radius: 0px;
 }

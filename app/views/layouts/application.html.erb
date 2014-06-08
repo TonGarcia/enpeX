@@ -54,10 +54,18 @@
                 <li>
                   <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="current_user_actions" data-toggle="dropdown">
-                      <h4> <%= @current_user.name %> <span class="caret"></span> </h4>
+                      <h4>
+                                <span class="brand success">
+                                  <%= @current_user.first_name %>
+                                </span>
+                                <span class="brand warning">
+                                  <%= @current_user.sur_name %>
+                                </span>
+                        <span class="caret"></span>
+                      </h4>
                     </button>
                     <!-- MENU -->
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <ul id="menu_current_user_actions" class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
                       <li><a role="menuitem" tabindex="-1" href="/projects/new">Criar Projeto</a></li>
                       <li class="divider"></li>
                       <li><a role="menuitem" tabindex="-1" href="/users/sign_out">Sair</a></li>

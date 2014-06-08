@@ -20,7 +20,7 @@
     <select id="project_type" name="project[project_type_id]" class="form-control">
       <option value="none">Segmento do Projeto</option>
       <% ProjectType.all.each do |project_type| %>
-          <option value="<%= project_type.id %>"> <%= t(:project_type)[project_type.name.to_sym] %></option>
+          <option value="<%= project_type.id %>"> <%= t(:project_type)[project_type.name.to_sym] %> </option>
       <% end %>
     </select>
 

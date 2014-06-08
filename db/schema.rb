@@ -36,9 +36,11 @@ ActiveRecord::Schema.define(version: 20140605042415) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "name",                      limit: 50,  null: false
-    t.string   "resume",                    limit: 144, null: false
+    t.string   "name",                      limit: 50,                 null: false
+    t.string   "alias_name",                limit: 50,                 null: false
+    t.string   "resume",                    limit: 144,                null: false
     t.string   "url_video",                 limit: 50
+    t.boolean  "active",                                default: true, null: false
     t.integer  "creator_id"
     t.string   "avatar_piece_file_name"
     t.string   "avatar_piece_content_type"

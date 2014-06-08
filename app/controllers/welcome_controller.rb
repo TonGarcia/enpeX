@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   layout 'home'
 
   def home
+    setup_user unless session['user_id'].nil?
     @user = User.new
   end
 

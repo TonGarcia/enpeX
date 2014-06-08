@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  skip_before_filter :setup_user, only: [:show, :index]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -70,6 +71,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :resume, :url_video)
+      params.require(:project).permit(:name, :resume, :url_video, :active)
     end
 end

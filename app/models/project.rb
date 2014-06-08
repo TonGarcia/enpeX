@@ -16,11 +16,19 @@ class Project < ActiveRecord::Base
   end
 
   def discounted_amount_invested
-    Transaction.where(:project_id => self.id).sum(:discounted_value)
+    if self.transactions.to_a.empty?
+      0.0
+    else
+      Transaction.where(:project_id => self.id).sum(:discounted_value)
+    end
   end
 
   def total_amount_invested
-    Transaction.where(:project_id => self.id).sum(:value)
+    if self.transactions.to_a.empty?
+      0.0
+    else
+      Transaction.where(:project_id => self.id).sum(:value) unless self.transactions.to_a.empty?
+    end
   end
 
   def card_receipt

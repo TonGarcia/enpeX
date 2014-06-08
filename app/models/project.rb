@@ -6,13 +6,19 @@ class Project < ActiveRecord::Base
   # Attrs Validations
   validates :name, presence: true, length: { in: 3..50 }, on: [:create, :update]
   validates :resume, presence: true, length: { in: 3..144 }, on: [:create, :update]
-  validates :url_video, presence: true, length: { in: 3..50 }, on: [:create, :update]
+  validates :url_video, presence: false, length: { in: 3..50 }, on: [:create, :update]
+  validates :active, presence: true, on: [:create, :update]
 
   # Relations Validations
   validates :creator_id, presence: true, on: [:create, :update]
 
   def owner
     self.user
+  end
+
+  def create_alias
+    self.alias_name = self.name.downcase
+    self.alias_name = self.alias_name.gsub(/ /, '-')
   end
 
   def discounted_amount_invested

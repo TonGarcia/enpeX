@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
 
   def home
     setup_user unless session['user_id'].nil?
+    @projects = Project.all.limit(6)
     @user = User.new
   end
 

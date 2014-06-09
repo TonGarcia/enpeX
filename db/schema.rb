@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608175316) do
+ActiveRecord::Schema.define(version: 20140608200845) do
 
   create_table "currencies", force: true do |t|
     t.string   "name",       limit: 50, null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140608175316) do
   add_index "description_items", ["project_id"], name: "index_description_items_on_project_id", using: :btree
 
   create_table "payment_methods", force: true do |t|
+    t.string   "through",     limit: 55,  null: false
     t.string   "type",        limit: 55,  null: false
     t.string   "description", limit: 140
     t.datetime "created_at"
@@ -99,20 +100,19 @@ ActiveRecord::Schema.define(version: 20140608175316) do
   end
 
   create_table "transactions", force: true do |t|
-    t.decimal  "value",             precision: 9, scale: 2, null: false
-    t.decimal  "decimal",           precision: 9, scale: 2, null: false
-    t.boolean  "banking",                                   null: false
-    t.integer  "payer_id",                                  null: false
-    t.integer  "receiver_id",                               null: false
-    t.integer  "payment_method_id",                         null: false
-    t.integer  "currency_id",                               null: false
+    t.decimal  "value",                      precision: 9, scale: 2, null: false
+    t.decimal  "decimal",                    precision: 9, scale: 2, null: false
+    t.boolean  "banking",                                            null: false
+    t.string   "receipt_access", limit: 140,                         null: false
+    t.integer  "payer_id",                                           null: false
+    t.integer  "receiver_id",                                        null: false
+    t.integer  "currency_id",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "transactions", ["currency_id"], name: "index_transactions_on_currency_id", using: :btree
   add_index "transactions", ["payer_id"], name: "index_transactions_on_payer_id", using: :btree
-  add_index "transactions", ["payment_method_id"], name: "index_transactions_on_payment_method_id", using: :btree
   add_index "transactions", ["receiver_id"], name: "index_transactions_on_receiver_id", using: :btree
 
   create_table "users", force: true do |t|

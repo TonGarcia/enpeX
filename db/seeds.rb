@@ -8,8 +8,8 @@
 
 # ProjectTypes
 puts 'Inserting ProjectTypes...'.colorize(:green)
-ProjectType.create(:name => 'education')
-ProjectType.create(:name => 'search')
-ProjectType.create(:name => 'extension')
+ProjectType.create(name: 'education')
+ProjectType.create(name: 'search')
+ProjectType.create(name: 'extension')
 puts '...ProjectTypes inserteds.'.colorize(:light_blue)
 # /ProjectTypes
